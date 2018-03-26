@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 26" width="31" height="26">
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: #ffffff } 
+	</style>
+	<path id="menu icon" class="shp0" d="M1,5.3h30v-4.31h-30zM1,15.65h30v-4.31h-30zM1,25.99h30v-4.31h-30z" />
+</svg>

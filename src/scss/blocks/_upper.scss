@@ -1,0 +1,28 @@
+.upper-wrapper {
+  width: 100%;
+  height: 100px;
+  background: url('../images/menu-base.png');
+  background-size: cover;
+}
+
+.upper {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+
+  &-logo {
+    width: 92px;
+    height: 51px;
+  }
+
+  &-menu {
+    display: none;
+  }
+
+  &-burger {
+    width: 31px;
+    height: 28px;
+  }
+}

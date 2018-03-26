@@ -1,0 +1,27 @@
+@mixin wrapper-background($value){
+  width: 100%;
+  padding: 1rem 0 0;
+  background: $value;
+}
+
+@mixin block-to-center(){
+  max-width: 1130px;
+  margin: auto;
+}
+
+
+
+$small: 768px;
+$large: 1028px;
+
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media only screen and (min-width: 100px)  and (max-width: $small) { @content; }
+  }
+  @else if $media == handheld {
+    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: $large) { @content; }
+  }
+}
