@@ -9,19 +9,34 @@
   margin: auto;
 }
 
+@mixin radio-active(){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background: var(--light-blue);
+
+  &::after{
+    content: ' ';
+    display: inline-block;
+    box-sizing: border-box;
+    width: 60%;
+    height: 60%;
+    border: 4px solid white;
+    border-radius: 100px;
+  }
+}
 
 
-$small: 768px;
+
+$small: 780px;
 $large: 1028px;
 
 @mixin respond-to($media) {
   @if $media == mobile {
     @media only screen and (min-width: 100px)  and (max-width: $small) { @content; }
   }
-  @else if $media == handheld {
-    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) { @content; }
-  }
   @else if $media == desktop {
-    @media only screen and (min-width: $large) { @content; }
+    @media only screen and (min-width: $small + 1) { @content; }
   }
 }

@@ -1,35 +1,68 @@
 .header-wrapper {
   width: 100%;
   height: 804px;
-  overflow: hidden;
+  //overflow: hidden;
 
   &-background{
-    min-width: 130%;
+    overflow: hidden;
     min-height:804px;
+    //max-height: 100%;
     position: absolute;
     top: 0;
     right: 30%;
     z-index: -1;
 
+
     @include respond-to(mobile){
+      min-width: 130%;
       left: -128%;
-      img {
+      &.bg {
         height:804px;
         width: auto;
-
+        left:0;
       }
 
+      &.hand {
+        position: absolute;
+        min-width: 0;
+        left: -500px;
+        top: 30%;
+      }
+    }
+
+    @include respond-to(desktop){
+      width: 100%;
+      left: 0;
+
+      &.hand {
+        position: absolute;
+        z-index:-1;
+        top: 150px;
+        left: -12%;
+        width: 690px;
+        min-height: 0;
+        height: 730px;
+      }
     }
   }
 }
 
 .header {
+
+
   &-title {
     color: white;
     font-size: 38px;
     width: 80%;
-    margin: 20px auto;
+    margin: 15% auto 20px;
     text-shadow: 0px 1px 1px grey;
+
+    @include respond-to(desktop){
+      width: 40%;
+      position: relative;
+      right: -20%;
+    }
+
 
     &__regular {
       font-family: 'Lato', sans-serif;
@@ -49,15 +82,42 @@
     font-weight: 300;
     width: 80%;
     margin: 20px auto;
+
+    @include respond-to(desktop){
+      width: 40%;
+      position: relative;
+      right: -20%;
+    }
   }
 
   &-button {
     margin: 20px auto;
+
+    @include respond-to(desktop){
+      width: 12%;
+      display: inline-block;
+      position: relative;
+      right: -50%;
+      margin: 40px 40px 0 0;
+    }
+  }
+
+  &-available{
+    width: 70%;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+
+    @include respond-to(desktop) {
+      display: block;
+      width: 20%;
+      margin: 50px 0 0 50%;
+    }
   }
 }
 
 .button {
-  width: 180px;
+  max-width: 180px;
   border: 2px solid;
   border-radius: 10px;
   color: white;
@@ -75,18 +135,15 @@
   }
 }
 
-.header-available{
-  width: 70%;
-  margin: 50px auto;
-}
-
 .available {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 100px 50px 50px;
+  grid-gap: 15px;
   align-items: center;
 
   &-title {
     color: white;
+    width: 100px;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     font-size: 18px;

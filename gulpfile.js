@@ -3,6 +3,9 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     imagemin = require('gulp-imagemin'),
     watch = require('gulp-watch');
+    babel = require('gulp-babel');
+    concat = require('gulp-concat');
+    uglify = require('gulp-uglify');
 
 gulp.task('sass', function() {
     gulp.src('./src/**/*.scss')
@@ -14,9 +17,13 @@ gulp.task('sass', function() {
 });
 
 gulp.task('js', function() {
-    gulp.src('./src/js/**/*.js')
+    gulp.src('./src/**/*.js')
+        .pipe(babel({
+        presets: ['env']
+    }))
+        .pipe(uglify())
         .pipe(concat('script.js'))
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('./build/'));
 });
 
 gulp.task('connect', function() {
@@ -46,9 +53,10 @@ gulp.task('fonts', function() {
 
 gulp.task('watch', function() {
     gulp.watch('./src/images/**/*.*', ['images']);
+    gulp.watch('./src/**/*.js', ['js']);
     gulp.watch('./src/scss/**/*.scss', ['sass']);
     gulp.watch(['./src/*.html'], ['html']);
 });
 
 
-gulp.task('default', ['connect', 'html', 'sass', 'images', 'fonts', 'watch']);
+gulp.task('default', ['connect', 'html', 'sass', 'js', 'images', 'fonts', 'watch']);
